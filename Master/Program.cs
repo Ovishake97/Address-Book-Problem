@@ -5,6 +5,8 @@ namespace Master
 {
     class Program
     {
+        //ADDRESS BOOK
+        //CAN STORE MULTIPLE ADDRESSBOOKS, ADD NEW RECORDS, EDIT EXISITING RECORDS AND DELETE RECORDS
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
@@ -26,8 +28,10 @@ namespace Master
             Console.WriteLine("Enter email id");
             string emailId = Console.ReadLine();
             addressCheck.AddToAddressBook(firstName, lastName, address, state, zip, phoneNo, emailId);
+            Console.WriteLine("Existing address books are: ");
+            addressCheck.PrintAddressBookNames();
             string data = addressCheck.GetFirstName(firstName);
-            Console.WriteLine("Employee details are:");
+            Console.WriteLine("Newly added employee details are:");
             addressCheck.PrintAddress(data);
             Console.WriteLine("Enter the name that you want to edit");
             string name = Console.ReadLine();
@@ -117,6 +121,13 @@ namespace Master
                 Console.WriteLine("Records having the first name " + name + " are deleted");
             }
 
+        }
+
+         //Print names of the addressbooks
+        public void PrintAddressBookNames() {
+            foreach (KeyValuePair<string, AddressBookMain> kvp in this.addresssBookMap) {
+                Console.WriteLine(kvp.Value.firstName);
+            }
         }
 
 
